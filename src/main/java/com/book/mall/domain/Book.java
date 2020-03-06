@@ -2,7 +2,7 @@ package com.book.mall.domain;
 
 import java.util.Date;
 
-public class book {
+public class Book {
     private int ID_book;
     private String Name_book;
     private String Author;
