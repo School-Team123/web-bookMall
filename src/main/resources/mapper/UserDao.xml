@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.mall.dao.UserDao">
+    <resultMap type="com.book.mall.domain.User" id="UserResult">
+        <result property="id" column="ID_user"/>
+        <result property="logname" column="LogName"/>
+        <result property="realname" column="RealName"/>
+        <result property="password" column="Password_md5"/>
+        <result property="email" column="Email"/>
+        <result property="gender" column="Gender"/>
+        <result property="province" column="Province"/>
+        <result property="education" column="Education"/>
+        <result property="hobbies" column="Hobbies"/>
+        <result property="selfIntro" column="Selfintro"/>
+        <result property="imagePath" column="Image_Path"/>
+    </resultMap>
+    <select id="findAllUsers" resultMap="UserResult">
+        select ID_user,LogName,RealName,Password_md5,Email,Gender,Province,Education,Hobbies,Selfintro,Image_Path from user
+        order by ID_user desc
+    </select>
+    <insert id="insertUser" parameterType="com.book.mall.domain.User">
+        insert into user(ID_user,LogName,RealName,Password_md5,Email,Gender,Province,Education,Hobbies,SelfIntro,Image_Path)
+        values(#{id},#{logname},#{realname},#{password},#{email},#{gender},#{province},#{education},#{hobbies},#{selfIntro},#{imagePath})
+    </insert>
+</mapper>
