@@ -7,7 +7,7 @@ public class Book {
     private String Name_book;
     private String Author;
     private int Language;
-    private int Category;
+    private String Category;
     private int Commend;
     private String Content;
     private String Price;
@@ -17,6 +17,7 @@ public class Book {
     private String Publish_address;
     private int Book_Num;
     private String Image_Path;
+    private int Sale_Num;
 
     public int getID_book() {
         return ID_book;
@@ -50,11 +51,11 @@ public class Book {
         Language = language;
     }
 
-    public int getCategory() {
+    public String getCategory() {
         return Category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(String category) {
         Category = category;
     }
 
@@ -129,4 +130,13 @@ public class Book {
     public void setImage_Path(String image_Path) {
         Image_Path = image_Path;
     }
+
+    public void setSale_Num(int sale_Num) {
+        Sale_Num = sale_Num;
+    }
+
+    public int getSale_Num() {
+        return Sale_Num;
+    }
+
 }
