@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.mall.dao.BookDao">
+    <resultMap type="com.book.mall.domain.Book" id="BookResult">
+        <result property="ID_book" column="ID_book"/>
+        <result property="Name_book" column="Name_book"/>
+        <result property="Author" column="Author"/>
+        <result property="Language" column="Language"/>
+        <result property="Category" column="Category"/>
+        <result property="Commend" column="Commend"/>
+        <result property="Content" column="Content"/>
+        <result property="Price" column="Price"/>
+        <result property="On_Sale_Time" column="On_Sale_Time"/>
+        <result property="Good_Price" column="Good_Price"/>
+        <result property="Publish_Name" column="Publish_Name"/>
+        <result property="Publish_address" column="Publish_address"/>
+        <result property="Book_Num" column="Book_Num"/>
+        <result property="Image_Path" column="Image_Path"/>
+        <result property="Sale_Num" column="Sale_Num"/>
+    </resultMap>
+    <select id="selectBookByName" resultMap="BookResult">
+        select ID_book,Name_book,Author,Language,Category,Commend,Content,Price,On_Sale_Time,Good_Price,Publish_Name,Publish_address,Book_Num,Image_Path,Sale_Num from book
+        where Name_book like concat(concat('%',#{bookName}),'%')
+        order by ID_book desc
+    </select>
+</mapper>

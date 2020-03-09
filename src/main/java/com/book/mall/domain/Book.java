@@ -10,7 +10,7 @@ public class Book {
     private String Category;
     private int Commend;
     private String Content;
-    private String Price;
+    private int Price;
     private Date On_Sale_Time;
     private String Good_Price;
     private String Publish_Name;
@@ -75,11 +75,11 @@ public class Book {
         Content = content;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         Price = price;
     }
 
