@@ -13,4 +13,20 @@ public interface BookDao {
      * @return
      */
     List<Book> selectBookByName(String bookName);
+
+    /**
+     * 返回该页码的书籍
+     *
+     * @param start
+     * @param limit
+     * @return
+     */
+    List<Book> getBookPage(int start,int limit);
+
+    /**
+     * 获取书籍总数量
+     *
+     * @return
+     */
+    int getBookCount();
 }

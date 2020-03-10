@@ -23,4 +23,17 @@
         where Name_book like concat(concat('%',#{bookName}),'%')
         order by ID_book desc
     </select>
+
+    <select id="getBookPage" resultMap="BookResult">
+        select ID_book,Name_book,Author,Language,Category,Commend,Content,Price,On_Sale_Time,Good_Price,Publish_Name,Publish_address,Book_Num,Image_Path,Sale_Num from book
+        order by ID_book desc
+        <if test="start!=null and limit!=null">
+            limit #{start},#{limit}
+        </if>
+    </select>
+
+    <select id="getBookCount" parameterType="Map" resultType="int">
+        select count(*) from book
+    </select>
+
 </mapper>

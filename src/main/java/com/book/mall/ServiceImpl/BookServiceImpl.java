@@ -18,4 +18,17 @@ public class BookServiceImpl implements BookService {
     {
         return bookDao.selectBookByName(bookName);
     }
+
+    @Override
+    public int getBookCount()
+    {
+        return bookDao.getBookCount();
+    }
+
+    @Override
+    public List<Book> getBookPage(int start, int limit)
+    {
+        return bookDao.getBookPage(start,limit);
+    }
+
 }
