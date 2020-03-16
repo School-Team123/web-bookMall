@@ -22,4 +22,17 @@
         insert into user(ID_user,LogName,RealName,Password_md5,Email,Gender,Province,Education,Hobbies,SelfIntro,Image_Path)
         values(#{id},#{logname},#{realname},#{password},#{email},#{gender},#{province},#{education},#{hobbies},#{selfIntro},#{imagePath})
     </insert>
+
+<!--    用于登录-->
+    <sql id="Base_Column_List">
+        ID_user,LogName,RealName,Password_md5,Email,Gender,Province,Education,Hobbies,Selfintro,Image_Path
+    </sql>
+
+    <!--    登录-->
+    <select id="login" resultMap="UserResult">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where LogName = #{userName,jdbcType=VARCHAR} AND Password_md5=#{password,jdbcType=VARCHAR}
+    </select>
 </mapper>
