@@ -20,4 +20,10 @@ public class OrderServiceImpl implements OrderService {
     {
         return  orderDao.selectOrderById(bookId);
     }
+
+    @Override
+    public List<Order> selectOrderByUserId(Integer userId)
+    {
+        return orderDao.selectOrderByUserId(userId);
+    }
 }

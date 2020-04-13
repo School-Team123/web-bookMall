@@ -16,16 +16,15 @@
         <result property="orderDelete" column="order_delete"/>
     </resultMap>
 
-    <!--    根据书籍id获取订单-->
-<!--    <select id="selectOrderById" resultMap="OrderResult">-->
-<!--        select ID_order,User_Name,User_address,User_id,Book_id,Book_nums,Status,Good_price,Comment,Comment_num,order_delete,User_tel from order-->
-<!--        where ID_order = #{bookId}-->
-<!--        order by ID_order desc-->
-<!--    </select>-->
-
     <select id="selectOrderById" resultMap="OrderResult">
         select ID_order,User_Name,User_address,User_id,Book_id,Book_nums,Status,Good_price,Comment,Comment_num,order_delete,User_tel from orders
         where Book_id = #{bookId}
+        order by ID_order desc
+    </select>
+
+    <select id="selectOrderByUserId" resultMap="OrderResult">
+        select ID_order,User_Name,User_address,User_id,Book_id,Book_nums,Status,Good_price,Comment,Comment_num,order_delete,User_tel from orders
+        where User_id = #{userId}
         order by ID_order desc
     </select>
 

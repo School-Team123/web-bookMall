@@ -29,4 +29,16 @@ public class OrderController {
         result.setData(orderServiceImpl.selectOrderById(bookId));
         return result;
     }
+
+    @PostMapping("/getCommentByBookUserId")
+    @ResponseBody
+    public Result getOrderByUserId(@RequestParam("userId") Integer  userId)
+    {
+        Result<List<Order>> result = new Result<>();
+        result.setResultCode(200);
+        result.setMessage("根据用户id获取订单成功");
+        result.setData(orderServiceImpl.selectOrderByUserId(userId));
+        return result;
+    }
+
 }

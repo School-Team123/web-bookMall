@@ -12,4 +12,12 @@ public interface OrderService {
      * @return
      */
     List<Order> selectOrderById(Integer bookId);
+
+    /**
+     * 根据用户id获取所有订单
+     *
+     * @param userId
+     * @return
+     */
+    List<Order> selectOrderByUserId(Integer userId);
 }
