@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Order")
+@RequestMapping("/order")
 public class OrderController {
     @Resource
     OrderServiceImpl orderServiceImpl;

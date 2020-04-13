@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.mall.dao.ShopCarDao">
+    <resultMap type="com.book.mall.domain.ShopCar" id="ShopCarResult">
+        <result property="userId" column="user_id"/>
+        <result property="bookId" column="book_id"/>
+        <result property="bookNum" column="book_num"/>
+    </resultMap>
+
+    <select id="selectShopCarsByUserId" resultMap="ShopCarResult">
+        select user_id,book_id,book_num from shopCar
+        where user_id = #{userId}
+        order by user_id desc
+    </select>
+
+
+
+</mapper>
