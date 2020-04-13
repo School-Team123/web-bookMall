@@ -18,12 +18,21 @@
         <result property="Image_Path" column="Image_Path"/>
         <result property="Sale_Num" column="Sale_Num"/>
     </resultMap>
+<!--    根据名称获取书籍-->
     <select id="selectBookByName" resultMap="BookResult">
         select ID_book,Name_book,Author,Language,Category,Commend,Content,Price,On_Sale_Time,Good_Price,Publish_Name,Publish_address,Book_Num,Image_Path,Sale_Num from book
         where Name_book like concat(concat('%',#{bookName}),'%')
         order by ID_book desc
     </select>
 
+<!--    根据ID获取书籍-->
+    <select id="selectBookById" resultMap="BookResult">
+        select ID_book,Name_book,Author,Language,Category,Commend,Content,Price,On_Sale_Time,Good_Price,Publish_Name,Publish_address,Book_Num,Image_Path,Sale_Num from book
+        where ID_book = #{bookId}
+        order by ID_book desc
+    </select>
+
+<!--    书籍分页-->
     <select id="getBookPage" resultMap="BookResult">
         select ID_book,Name_book,Author,Language,Category,Commend,Content,Price,On_Sale_Time,Good_Price,Publish_Name,Publish_address,Book_Num,Image_Path,Sale_Num from book
         order by ID_book desc
@@ -34,6 +43,13 @@
 
     <select id="getBookCount" parameterType="Map" resultType="int">
         select count(*) from book
+    </select>
+
+<!--   获取折扣书籍-->
+    <select id="getDiscountBooks" resultMap="BookResult">
+        select ID_book,Name_book,Author,Language,Category,Commend,Content,Price,On_Sale_Time,Good_Price,Publish_Name,Publish_address,Book_Num,Image_Path,Sale_Num from book
+        where Good_Price IS NOT NULL AND Good_Price != '10'
+        order by ID_book desc
     </select>
 
 </mapper>

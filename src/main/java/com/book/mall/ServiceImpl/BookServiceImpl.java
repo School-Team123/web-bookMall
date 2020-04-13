@@ -31,4 +31,15 @@ public class BookServiceImpl implements BookService {
         return bookDao.getBookPage(start,limit);
     }
 
+    @Override
+    public List<Book> getDiscountBooks()
+    {
+        return bookDao.getDiscountBooks();
+    }
+
+    @Override
+    public  List<Book> selectBookById(Integer bookId)
+    {
+        return bookDao.selectBookById(bookId);
+    }
 }

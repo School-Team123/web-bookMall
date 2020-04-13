@@ -15,6 +15,15 @@ public interface BookService {
     List<Book> selectBookByName(String bookName);
 
     /**
+     * 根据书名搜索数据
+     *
+     * @param bookId
+     * @return
+     */
+
+    List<Book> selectBookById(Integer bookId);
+
+    /**
      * 返回该页码的书籍
      *
      * @param start
@@ -29,4 +38,11 @@ public interface BookService {
      * @return
      */
     int getBookCount();
+
+    /**
+     * 获取优惠书籍
+     *
+     * @return
+     */
+    List<Book> getDiscountBooks();
 }

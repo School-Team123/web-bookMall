@@ -2,6 +2,7 @@ package com.book.mall.controller;
 
 import com.book.mall.ServiceImpl.BookServiceImpl;
 import com.book.mall.domain.Book;
+import com.book.mall.domain.Order;
 import com.book.mall.util.PageResult;
 import com.book.mall.util.Result;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class BookController {
 
     @PostMapping("/selectBookByName")
     @ResponseBody
-    public Result selectBookByName(HttpServletRequest request, @RequestParam("bookName") String bookName) {
+    public Result selectBookByName(@RequestParam("bookName") String bookName) {
         Result<List<Book>> result = new Result<>();
         if(bookName != "")
         {
@@ -58,5 +59,27 @@ public class BookController {
         int size = bookServiceImpl.getBookCount();
         PageResult pageResult = new PageResult(bookServiceImpl.getBookPage(start,limit),size,limit,page);
         return pageResult;
+    }
+
+    @GetMapping("/DiscountBook")
+    @ResponseBody
+    public Result getDiscountBooks()
+    {
+        Result<List<Book>> result = new Result<>();
+        result.setResultCode(200);
+        result.setMessage("获取折扣书籍成功");
+        result.setData(bookServiceImpl.getDiscountBooks());
+        return result;
+    }
+
+    @PostMapping("/selectBookById")
+    @ResponseBody
+    public Result getComment(@RequestParam("bookId") Integer bookId)
+    {
+        Result<List<Book>> result = new Result<>();
+        result.setResultCode(200);
+        result.setMessage("获取书籍成功");
+        result.setData(bookServiceImpl.selectBookById(bookId));
+        return result;
     }
 }

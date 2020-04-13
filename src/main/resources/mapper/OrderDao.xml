@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.mall.dao.OrderDao">
+    <resultMap type="com.book.mall.domain.Order" id="OrderResult">
+        <result property="id" column="ID_order"/>
+        <result property="userName" column="User_Name"/>
+        <result property="address" column="User_address"/>
+        <result property="userId" column="User_id"/>
+        <result property="userTel" column="User_tel"/>
+        <result property="bookId" column="Book_id"/>
+        <result property="bookNums" column="Book_nums"/>
+        <result property="status" column="Status"/>
+        <result property="goodPrice" column="Good_price"/>
+        <result property="comment" column="Comment"/>
+        <result property="commentNum" column="Comment_num"/>
+        <result property="orderDelete" column="order_delete"/>
+    </resultMap>
+
+    <!--    根据书籍id获取订单-->
+<!--    <select id="selectOrderById" resultMap="OrderResult">-->
+<!--        select ID_order,User_Name,User_address,User_id,Book_id,Book_nums,Status,Good_price,Comment,Comment_num,order_delete,User_tel from order-->
+<!--        where ID_order = #{bookId}-->
+<!--        order by ID_order desc-->
+<!--    </select>-->
+
+    <select id="selectOrderById" resultMap="OrderResult">
+        select ID_order,User_Name,User_address,User_id,Book_id,Book_nums,Status,Good_price,Comment,Comment_num,order_delete,User_tel from orders
+        where Book_id = #{bookId}
+        order by ID_order desc
+    </select>
+
+</mapper>

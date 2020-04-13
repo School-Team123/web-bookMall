@@ -1,6 +1,6 @@
 package com.book.mall.domain;
 
-public class order {
+public class Order {
     //对应ID_order
     private Integer id;
 
@@ -17,7 +17,7 @@ public class order {
     private String userTel;
 
     //对应Book_id
-    private Integer bookId;
+    private int bookId;
 
     //对应Book_nums
     private Integer bookNums;
@@ -25,17 +25,17 @@ public class order {
     //对应Status
     private Integer status;
 
-    //对应Good_price
+    //对应Good_price这里指单价
     private Integer goodPrice;
 
     //对应Comment
     private String comment;
 
-    //对应Comment_num
+    //对应Comment_num这里指评论满意度
     private Integer commentNum;
 
     //对应order_delete
-    private Integer order_delete;
+    private Integer orderDelete;
 
     public void setId(Integer id) {
         this.id = id;
@@ -77,11 +77,11 @@ public class order {
         return userTel;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
-    public Integer getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
@@ -125,12 +125,12 @@ public class order {
         return commentNum;
     }
 
-    public void setOrder_delete(Integer order_delete) {
-        this.order_delete = order_delete;
+    public void setOrderDelete(Integer orderDelete) {
+        this.orderDelete = orderDelete;
     }
 
-    public Integer getOrder_delete() {
-        return order_delete;
+    public Integer getOrderDelete() {
+        return orderDelete;
     }
 
 }

@@ -15,6 +15,21 @@ public interface BookDao {
     List<Book> selectBookByName(String bookName);
 
     /**
+     * 根据ID搜索书籍
+     *
+     * @param bookId
+     * @return
+     */
+    List<Book> selectBookById(Integer bookId);
+
+    /**
+     * 获取优惠书籍
+     *
+     * @return
+     */
+    List<Book> getDiscountBooks();
+
+    /**
      * 返回该页码的书籍
      *
      * @param start
@@ -29,4 +44,5 @@ public interface BookDao {
      * @return
      */
     int getBookCount();
+
 }
