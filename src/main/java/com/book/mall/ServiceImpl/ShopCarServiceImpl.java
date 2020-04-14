@@ -19,4 +19,22 @@ public class ShopCarServiceImpl implements ShopCarService {
     {
         return shopCarDao.selectShopCarsByUserId(userId);
     }
+
+    @Override
+    public Integer insertShopCar(ShopCar shopCar)
+    {
+        return shopCarDao.insertShopCar(shopCar);
+    }
+
+    @Override
+    public Integer deleteShopCar(Integer userId,Integer bookId)
+    {
+        return shopCarDao.deleteShopCar(userId,bookId);
+    }
+
+    @Override
+    public Integer updateShopCar(ShopCar shopCar)
+    {
+        return shopCarDao.updateShopCar(shopCar);
+    }
 }

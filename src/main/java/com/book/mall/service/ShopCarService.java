@@ -12,4 +12,27 @@ public interface ShopCarService {
      * @return
      */
     List<ShopCar> selectShopCarsByUserId(Integer userId);
+
+    /**
+     * 往购物车里插入数据
+     *
+     * @param shopCar
+     * @return
+     */
+    Integer insertShopCar(ShopCar shopCar);
+
+    /**
+     * 修改购物车里数量
+     *
+     * @param shopCar
+     * @return
+     */
+    Integer updateShopCar(ShopCar shopCar);
+
+    /**
+     * 删除购物车里的条目
+     *
+     * @return
+     */
+    Integer deleteShopCar(Integer userId,Integer bookId);
 }
