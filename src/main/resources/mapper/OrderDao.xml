@@ -28,4 +28,16 @@
         order by ID_order desc
     </select>
 
+    <select id="selectWeekHotBook"   resultMap="OrderResult">
+        select DISTINCT Book_id from orders x
+        where DateDiff(CURDATE(),x.order_time)&lt;=7
+        order by (select SUM(Book_nums) from orders y where y.Book_id=x.Book_id and DateDiff(CURDATE(),y.order_time)&lt;=7)  DESC limit 0,10
+    </select>
+
+    <select id="selectMonthHotBook"   resultMap="OrderResult">
+        select DISTINCT Book_id from orders x
+        where DateDiff(CURDATE(),x.order_time)&lt;=30
+        order by (select SUM(Book_nums) from orders y where y.Book_id=x.Book_id and DateDiff(CURDATE(),y.order_time)&lt;=30)  DESC limit 0,15
+    </select>
+
 </mapper>

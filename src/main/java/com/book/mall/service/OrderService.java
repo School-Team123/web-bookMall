@@ -20,4 +20,20 @@ public interface OrderService {
      * @return
      */
     List<Order> selectOrderByUserId(Integer userId);
+
+    /**
+     * 获取本周热销书籍
+     *
+     *
+     * @return
+     */
+    List<Order> selectWeekHotBook();
+
+    /**
+     * 获取本月热销书籍
+     *
+     *
+     * @return
+     */
+    List<Order> selectMonthHotBook();
 }

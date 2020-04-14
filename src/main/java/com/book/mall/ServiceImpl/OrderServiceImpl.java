@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,5 +26,18 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> selectOrderByUserId(Integer userId)
     {
         return orderDao.selectOrderByUserId(userId);
+    }
+
+    @Override
+    public List<Order> selectWeekHotBook()
+    {
+
+        return orderDao.selectWeekHotBook();
+    }
+    @Override
+    public List<Order> selectMonthHotBook()
+    {
+
+        return orderDao.selectMonthHotBook();
     }
 }
