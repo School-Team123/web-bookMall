@@ -1,5 +1,7 @@
 package com.book.mall.domain;
 
+import java.util.Date;
+
 public class Order {
     //对应ID_order
     private Integer id;
@@ -36,6 +38,8 @@ public class Order {
 
     //对应order_delete
     private Integer orderDelete;
+
+    private Date orderTime;
 
     public void setId(Integer id) {
         this.id = id;
@@ -132,6 +136,15 @@ public class Order {
     public Integer getOrderDelete() {
         return orderDelete;
     }
+
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public Date getOrderTime() {
+        return orderTime;
+    }
+
 
 }
 
