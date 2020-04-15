@@ -7,11 +7,30 @@
         <result property="bookNum" column="book_num"/>
     </resultMap>
 
+<!--    获取购物车内容-->
     <select id="selectShopCarsByUserId" resultMap="ShopCarResult">
         select user_id,book_id,book_num from shopCar
         where user_id = #{userId}
         order by user_id desc
     </select>
+
+<!--    添加内容进购物车-->
+    <insert id="insertShopCar" parameterType="com.book.mall.domain.ShopCar">
+        insert into shopCar(user_id,book_id,book_num)
+        values(#{userId},#{bookId},#{bookNum})
+    </insert>
+
+<!--    删除购物车内容-->
+    <delete id="deleteShopCar" >
+        delete from shopCar where user_id = #{userId} AND book_id = #{bookId}
+    </delete>
+
+<!--    修改购物车内容-->
+    <update id="updateShopCar">
+        update shopCar set
+        book_num = #{bookNum}
+        where user_id = #{userId} AND book_id = #{bookId}
+    </update>
 
 
 
