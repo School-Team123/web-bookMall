@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.mall.dao.ManagerDao">
+    <resultMap type="com.book.mall.domain.Manager" id="ManagerResult">
+        <result property="id" column="ID_manager"/>
+        <result property="logname" column="LogName"/>
+        <result property="realname" column="RealName"/>
+        <result property="password" column="Password"/>
+        <result property="email" column="Email"/>
+        <result property="gender" column="Gender"/>
+        <result property="province" column="Province"/>
+        <result property="education" column="Education"/>
+        <result property="hobbies" column="Hobbies"/>
+        <result property="selfIntro" column="Selfintro"/>
+        <result property="imagePath" column="Image_Path"/>
+    </resultMap>
+
+
+
+
+
+    <!--    登录-->
+    <select id="loginManager" resultMap="ManagerResult">
+        select *
+        from manager
+        where LogName = #{logname,jdbcType=VARCHAR} AND Password=#{password,jdbcType=VARCHAR}
+    </select>
+</mapper>
