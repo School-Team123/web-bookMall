@@ -19,6 +19,7 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
+    public static String ipPath="http://localhost:8080/";
     @Resource
     ManagerServiceImpl managerServiceImpl;
 
@@ -64,7 +65,7 @@ public class ManagerController {
         String originalFileName = imagePath.getOriginalFilename();//获取原始图片的扩展名
         String newFileName = UUID.randomUUID()+originalFileName;
         String newFilePath=filePath+"/"+newFileName; //新文件的路径
-        String dataBasePath="/src/main/resources/static/images/"+newFileName;
+        String dataBasePath="static/images/"+newFileName;
 
         try {
             imagePath.transferTo(new File(newFilePath));  //将传来的文件写入新建的文件
@@ -108,9 +109,9 @@ public class ManagerController {
         String originalFileName = imagePath.getOriginalFilename();//获取原始图片的扩展名
         String newFileName = UUID.randomUUID()+originalFileName;
         String newFilePath=filePath+"/"+newFileName; //新文件的路径
-        String dataBasePath="/src/main/resources/static/images/"+newFileName;
+        String dataBasePath="images/"+newFileName;
         String p= bookServiceImpl.selectBookById(bookId).getImage_Path();
-        File f=new File(System.getProperty("user.dir")+p);
+        File f=new File(System.getProperty("user.dir")+"/src/main/resources/static/"+p);
         if(f.exists())
         {
             f.delete();

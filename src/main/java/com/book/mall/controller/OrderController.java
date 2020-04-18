@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.book.mall.controller.ManagerController.ipPath;
+
 @Controller
 @RequestMapping("/order")
 public class OrderController {
@@ -59,8 +61,11 @@ public class OrderController {
         for(int i=0;i<orderServiceImpl.selectWeekHotBook().size();i++)
         {
             b[i]=orderServiceImpl.selectWeekHotBook().get(i).getBookId();
-            a.add(bookServiceImpl.selectBookById(b[i]));
+            Book book=bookServiceImpl.selectBookById(b[i]);
+            book.setImage_Path(ipPath+book.getImage_Path());
+            a.add(book);
         }
+
         result.setMessage("获取本周热销书籍成功"+b);
         result.setData(a);
         return result;
@@ -77,7 +82,9 @@ public class OrderController {
         for(int i=0;i<orderServiceImpl.selectMonthHotBook().size();i++)
         {
             b[i]=orderServiceImpl.selectMonthHotBook().get(i).getBookId();
-            a.add(bookServiceImpl.selectBookById(b[i]));
+            Book book=bookServiceImpl.selectBookById(b[i]);
+            book.setImage_Path(ipPath+book.getImage_Path());
+            a.add(book);
         }
         result.setMessage("获取本月热销书籍成功"+b);
         result.setData(a);
