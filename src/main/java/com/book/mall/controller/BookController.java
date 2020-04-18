@@ -1,6 +1,7 @@
 package com.book.mall.controller;
 
 import com.book.mall.ServiceImpl.BookServiceImpl;
+import com.book.mall.ServiceImpl.OrderServiceImpl;
 import com.book.mall.domain.Book;
 import com.book.mall.domain.Order;
 import com.book.mall.util.PageResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,6 +21,8 @@ public class BookController {
 
     @Resource
     BookServiceImpl bookServiceImpl;
+    @Resource
+    OrderServiceImpl orderServiceImpl;
 
     @PostMapping("/selectBookByName")
     @ResponseBody
@@ -76,10 +80,14 @@ public class BookController {
     @ResponseBody
     public Result getComment(@RequestParam("bookId") Integer bookId)
     {
-        Result<List<Book>> result = new Result<>();
+        //返回的内容包括评论
+        Result<List> result = new Result<>();
         result.setResultCode(200);
         result.setMessage("获取书籍成功");
-        result.setData(bookServiceImpl.selectBookById(bookId));
+        List a = new ArrayList();
+        a.add(bookServiceImpl.selectBookById(bookId));
+        a.add(orderServiceImpl.selectOrderById(bookId));
+        result.setData(a);
         return result;
     }
 }
