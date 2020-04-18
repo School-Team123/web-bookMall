@@ -25,4 +25,20 @@
         from manager
         where LogName = #{logname,jdbcType=VARCHAR} AND Password=#{password,jdbcType=VARCHAR}
     </select>
+
+    <!--管理员新增书籍-->
+    <insert id="addBook">
+         insert into book (Name_book, Author, Language, Category, Commend, Content, Price,On_Sale_Time, Good_Price, Publish_Name, Publish_address, Book_Num, Image_Path, Sale_Num) values (#{bookName},#{author},#{language},#{category},#{commend},#{content},#{price},#{onSaleTime},#{goodPrice},#{publishName},#{publishAddress},#{bookNum},#{imagePath},#{saleNum})
+    </insert>
+
+    <!--管理员修改书籍信息-->
+    <update id="changeBookInfo">
+        update book set Name_book=#{bookName},Author=#{author},Language=#{language},Category=#{category},Commend=#{commend},Content=#{content},Price=#{price},On_Sale_Time=#{onSaleTime},Good_Price=#{goodPrice},Publish_Name=#{publishName},Publish_address=#{publishAddress},Book_Num=#{bookNum},Image_Path=#{imagePath},Sale_Num=#{saleNum}
+        where ID_book=#{bookId}
+    </update>
+
+    <!--管理员删除书籍-->
+    <delete id="deleteBook">
+        delete from book where ID_book=#{bookId}
+    </delete>
 </mapper>
