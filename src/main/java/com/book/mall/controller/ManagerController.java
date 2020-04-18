@@ -109,7 +109,7 @@ public class ManagerController {
         String newFileName = UUID.randomUUID()+originalFileName;
         String newFilePath=filePath+"/"+newFileName; //新文件的路径
         String dataBasePath="/src/main/resources/static/images/"+newFileName;
-        String p= bookServiceImpl.selectBookById(bookId).get(0).getImage_Path();
+        String p= bookServiceImpl.selectBookById(bookId).getImage_Path();
         File f=new File(System.getProperty("user.dir")+p);
         if(f.exists())
         {
