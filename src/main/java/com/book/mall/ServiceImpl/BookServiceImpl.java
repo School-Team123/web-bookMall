@@ -38,7 +38,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public  List<Book> selectBookById(Integer bookId)
+    public  Book selectBookById(Integer bookId)
     {
         return bookDao.selectBookById(bookId);
     }

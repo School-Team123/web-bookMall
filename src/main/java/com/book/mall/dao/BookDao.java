@@ -20,7 +20,7 @@ public interface BookDao {
      * @param bookId
      * @return
      */
-    List<Book> selectBookById(Integer bookId);
+    Book selectBookById(Integer bookId);
 
     /**
      * 获取优惠书籍

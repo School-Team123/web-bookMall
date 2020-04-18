@@ -85,7 +85,23 @@ public class BookController {
         result.setResultCode(200);
         result.setMessage("获取书籍成功");
         List a = new ArrayList();
+        String []temp1 = bookServiceImpl.selectBookById(bookId).getCategory().split("#");
+        List <String> temp2 = new ArrayList<>();
+        for(String x :  temp1){
+            switch (x)
+            {
+                case "1": temp2.add("计算机类");
+                break;
+                case "2": temp2.add("人文类");
+                break;
+                case "3": temp2.add("工程类");
+                break;
+                case "4": temp2.add("哲学类");
+                break;
+            }
+        }
         a.add(bookServiceImpl.selectBookById(bookId));
+        a.add(temp2);
         a.add(orderServiceImpl.selectOrderById(bookId));
         result.setData(a);
         return result;

@@ -21,7 +21,7 @@ public interface BookService {
      * @return
      */
 
-    List<Book> selectBookById(Integer bookId);
+    Book selectBookById(Integer bookId);
 
     /**
      * 返回该页码的书籍
