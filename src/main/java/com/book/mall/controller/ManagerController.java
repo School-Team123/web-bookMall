@@ -39,7 +39,7 @@ public class ManagerController {
     //private String filePath="../../../../main/resources/static/";
     @PostMapping("/addBook")
     @ResponseBody
-    public void addBook(@RequestParam("bookName") String bookName,
+    public int addBook(@RequestParam("bookName") String bookName,
                         @RequestParam("author") String author,
                         @RequestParam("language") int language,
                         @RequestParam("category") String category,
@@ -65,24 +65,27 @@ public class ManagerController {
         String originalFileName = imagePath.getOriginalFilename();//获取原始图片的扩展名
         String newFileName = UUID.randomUUID()+originalFileName;
         String newFilePath=filePath+"/"+newFileName; //新文件的路径
-        String dataBasePath="static/images/"+newFileName;
+        String dataBasePath="images/"+newFileName;
 
         try {
             imagePath.transferTo(new File(newFilePath));  //将传来的文件写入新建的文件
 
         }catch (IllegalStateException e ) {
             //处理异常
+            return 0;
         }catch(IOException e1){
             //处理异常
+            return 0;
         }
         managerServiceImpl.addBook(bookName,author,language,category,commend,content,price,onSaleTime,goodPrice,publishName,publishAddress,bookNum,dataBasePath,saleNum);
+        return 1;
     }
 
     @Resource
     BookServiceImpl bookServiceImpl;
     @PostMapping("/changeBookInfo")
     @ResponseBody
-    public void changeBookInfo(@RequestParam("bookId") int bookId,
+    public int changeBookInfo(@RequestParam("bookId") int bookId,
                         @RequestParam("bookName") String bookName,
                         @RequestParam("author") String author,
                         @RequestParam("language") int language,
@@ -122,15 +125,30 @@ public class ManagerController {
 
         }catch (IllegalStateException e ) {
             //处理异常
+            return 0;
         }catch(IOException e1){
             //处理异常
+            return 0;
         }
         managerServiceImpl.changeBookInfo(bookId,bookName,author,language,category,commend,content,price,onSaleTime,goodPrice,publishName,publishAddress,bookNum,dataBasePath,saleNum);
+        return 1;
     }
 
     @PostMapping("deleteBook")
     @ResponseBody
-    public void deleteBook(@RequestParam("bookId") int id){
-        managerServiceImpl.deleteBook(id);
+    public int deleteBook(@RequestParam("bookId") int id){
+        try {
+
+            File f=new File(System.getProperty("user.dir")+"/src/main/resources/static/"+ bookServiceImpl.selectBookById(id).getImage_Path());
+            if(f.exists())
+            {
+                f.delete();
+            }
+            managerServiceImpl.deleteBook(id);
+        }catch (Exception e)
+        {
+            return 0;
+        }
+        return 1;
     }
 }
