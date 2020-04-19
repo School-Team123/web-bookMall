@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.book.mall.controller.ManagerController.ipPath;
+
 @Controller
 @RequestMapping("/book")
 public class BookController {
@@ -100,7 +102,9 @@ public class BookController {
                 break;
             }
         }
-        a.add(bookServiceImpl.selectBookById(bookId));
+        Book b=bookServiceImpl.selectBookById(bookId);
+        b.setImage_Path(ipPath+b.getImage_Path());
+        a.add(b);
         a.add(temp2);
         a.add(orderServiceImpl.selectOrderById(bookId));
         result.setData(a);
